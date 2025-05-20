@@ -1,0 +1,30 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+  local-db:
+    container_name: local-db
+    image: postgres:16.3-bullseye
+    restart: always
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_PASSWORD: local-db
+
+
+  prod-db:
+    container_name: prod-db
+    image: postgres:16.3-bullseye
+    restart: always
+    ports:
+      - 5434:5432
+    environment:
+      POSTGRES_PASSWORD: prod-db
+
+  ihm-bd:
+    container_name: ihm-bd
+    image: adminer
+    restart: always
+    ports:
+      - 8092:8080
